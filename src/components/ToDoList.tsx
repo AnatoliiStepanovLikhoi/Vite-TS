@@ -1,12 +1,9 @@
 import React from "react";
-
-interface IItems {
-  id: string;
-  title: string;
-}
+import { IItems } from "../types/todo";
 
 interface IProps {
   todos: IItems[];
+  onRemoveTodo: (id: string) => void;
 }
 
 // interface IState {
@@ -21,6 +18,7 @@ const TodoList: React.FC<IProps> = (props) => {
           <li key={item.id}>
             <div>{item.id}</div>
             <div>{item.title}</div>
+            <button onClick={() => props.onRemoveTodo(item.id)}>Remove</button>
           </li>
         );
       })}
